@@ -31,7 +31,12 @@ if(NOT CMAKE_VERSION VERSION_LESS 3.9.0)
 endif()
 project(Corrade ${LANG})
 
-# CMake policies: don't treat imported targets with :: as files
+# CMake policies
+# Use AppleClang instead of Clang on Apple
+if(POLICY CMP0025)
+    cmake_policy(SET CMP0025 NEW)
+endif()
+# Don't treat imported targets with :: as files
 if(POLICY CMP0028)
     cmake_policy(SET CMP0028 NEW)
 endif()
